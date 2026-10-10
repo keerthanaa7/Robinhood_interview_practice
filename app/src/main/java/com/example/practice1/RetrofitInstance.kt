@@ -14,4 +14,8 @@ object RetrofitInstance {
     val postApiService: PostApiService by lazy {
         retrofit.create<PostApiService>(PostApiService::class.java)
     }
+
+    val postTimerApiService: PostTimerApiService by lazy {
+        retrofit.create<PostTimerApiService>(PostTimerApiService::class.java)
+    }
 }
