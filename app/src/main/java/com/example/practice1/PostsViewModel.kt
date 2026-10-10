@@ -1,6 +1,7 @@
 package com.example.practice1
 
 import PostItem
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -48,6 +49,7 @@ class PostsViewModel(private val postRepository: PostRepository) : ViewModel(){
             uiStateMutable.value = PostUIState.Loading
             try {
                 val postslist = postRepository.getPosts()
+                Log.d("PostsViewModel", "post list ${postslist.size}")
                 if(postslist.isEmpty()){
                     uiStateMutable.value = PostUIState.Error("post list is empty")
                 }else{
@@ -61,6 +63,5 @@ class PostsViewModel(private val postRepository: PostRepository) : ViewModel(){
 
     fun onQueryChanged(newQuery: String){
         searchQuerymutable.value = newQuery
-
     }
 }
